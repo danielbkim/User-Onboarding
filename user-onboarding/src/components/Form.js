@@ -14,25 +14,27 @@ export default function Form(props) {
                 <br></br>
                 <label>
                     Name:
-                    <input></input>
+                    <input type='text'></input>
                 </label>
                 <br></br>
                 <br></br>
                 <label>
                     Email:
-                    <input></input>
+                    <input type='text'></input>
                 </label>
                 <br></br>
                 <br></br>
                 <label>
                     Password:
-                    <input></input>
+                    <input type='text'></input>
                 </label>
                 <br></br>
                 <br></br>
                 <label>
+                    {/* is checked property is resolved to true, it will always be checked true - we need to set it to be checked if the value is single */}
+                    {/* values.[INSERT KEY HERE] in checked evaluate a boolean for { if value.[ WHATEVER] === true, then put this } */}
                     Terms of Service:
-                    <input></input>
+                    <input type='checkbox' checked={ true }></input>
                 </label>
                 <br></br>
                 <br></br>
