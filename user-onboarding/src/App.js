@@ -1,7 +1,9 @@
 import axios from 'axios';
-import React from 'react';
+import React, { useEffect } from 'react';
 import './App.css';
 import Form from './components/Form';
+// import schema from "./validation/formSchema";
+// import * as yup from 'yup';
 
 function App() {
 
@@ -40,6 +42,25 @@ function App() {
   //     })
   //     .catch()
   // };
+
+  // build
+  // use GET request to get to populate the data of users - the function
+  // I don't need a get request because there's no external data needing to be pulled
+  // const getUsers = () => {
+  //   axios
+  //     .get()
+  //     .then()
+  //     .catch()
+  // };
+
+
+  // POST REQUEST AFTER YOU'VE BUILT OUT WHAT A SINGLE USER LOOKS LIKE
+
+
+  // use a hook to pull users using a GET request
+  // useEffect(() => {
+  //   getUsers();
+  // }, []);
 
   return (
     <div className="App">

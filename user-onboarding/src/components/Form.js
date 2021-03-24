@@ -1,6 +1,22 @@
 import { React } from 'react';
+// import function logic from App
+
+const initialFormValues = {
+    name: "",
+    email: "",
+    password: "",
+    termsOfService: false
+};
+
+// need to add initialFormErrors for schema?
+
 
 export default function Form(props) {
+
+    const formSubmit = () => {
+        
+    };
+
     return (
         <div>
             <form>
@@ -34,7 +50,7 @@ export default function Form(props) {
                     {/* is checked property is resolved to true, it will always be checked true - we need to set it to be checked if the value is single */}
                     {/* values.[INSERT KEY HERE] in checked evaluate a boolean for { if value.[ WHATEVER] === true, then put this } */}
                     Terms of Service:
-                    <input type='checkbox' checked={ true }></input>
+                    {/* <input type='checkbox' checked={ true }></input> */}
                 </label>
                 <br></br>
                 <br></br>
