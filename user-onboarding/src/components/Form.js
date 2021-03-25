@@ -61,7 +61,7 @@ export default function Form(props) {
                     <input
                         value={values.email}
                         onChange={onChange}
-                        name='name'
+                        name='email'
                         type='text'
 
                     />
@@ -73,7 +73,7 @@ export default function Form(props) {
                     <input
                         value={values.password}
                         onChange={onChange}
-                        name='name'
+                        name='password'
                         type='text'
 
                     />
@@ -94,7 +94,7 @@ export default function Form(props) {
                 </label>
                 <br></br>
                 <br></br>
-                <button>submit</button>
+                <button id='submitBtn'>submit</button>
             </form>
         </div>
     );
