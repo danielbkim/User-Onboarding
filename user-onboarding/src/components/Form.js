@@ -13,7 +13,10 @@ export default function Form(props) {
 
     // CHANGE AND SUBMIT LOGIC SHOULD BE IN HERE
     const onChange = (event) => {
-        console.log(event.target)
+        console.log(event.target.checked)
+        // extract what you need from the event target object
+        const { name, value, type, checked } = event.target;
+        
     };
 
 
@@ -36,7 +39,7 @@ export default function Form(props) {
                     Name:
                     <input
                         value={values.name}
-                        // onChange
+                        onChange={onChange}
                         name='name'
                         type='text'
 
@@ -48,7 +51,7 @@ export default function Form(props) {
                     Email:
                     <input
                         value={values.email}
-                        // onChange
+                        onChange={onChange}
                         name='name'
                         type='text'
 
@@ -60,7 +63,7 @@ export default function Form(props) {
                     Password:
                     <input
                         value={values.password}
-                        // onChange
+                        onChange={onChange}
                         name='name'
                         type='text'
 
@@ -74,7 +77,7 @@ export default function Form(props) {
                     Terms of Service:
                     <input
                         value={values.termsOfService}
-                        // onChange
+                        onChange={onChange}
                         name='termsOfService'
                         // checked
                         type='checkbox'
