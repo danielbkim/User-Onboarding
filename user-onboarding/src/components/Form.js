@@ -16,10 +16,6 @@ export default function Form(props) {
     };
 
 
-    // const formSubmit = () => {
-
-    // };
-
     return (
         <div>
             <form>

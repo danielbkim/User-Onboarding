@@ -13,19 +13,27 @@ const initialFormValues = {
   termsOfService: false
 };
 
+const initialFormErrors = {
+  name: "",
+  email: "",
+  password: "",
+  termsOfService: false
+};
+
 const initialUsers = [];
+const initialDisabled = true;
 
 function App() {
 
   const [users, setUsers] = useState(initialUsers);
   const [formValues, setFormValues] = useState(initialFormValues);
   // store the state of input errors to compare against
-  const [formErrors, setFormErrors] = useState();
+  const [formErrors, setFormErrors] = useState(initialFormErrors);
   // store the state of the boolean errors to compare against
-
+  const [disabled, setDisabled] = useState(initialDisabled);
   // Craft POST request using axios to send form data
   // POST REQUEST AFTER YOU'VE BUILT OUT WHAT A SINGLE USER LOOKS LIKE
-  const postUser = (newUser) => {
+  const postNewUser = (newUser) => {
     // take the newUser object and send the axios post call to the endpoint
     axios
     .post('https://reqres.in/api/users', newUser)
@@ -74,6 +82,20 @@ function App() {
       })
   };
 
+  // LOGIC FOR ENCAPSULATING ACTION OF ADDING USER UPON SUBMIT
+  const formSubmit = () => {
+    // build out the user object using the inputs pulled from the state and then use helper to create new user via the POST user helper to send POST request
+    const newUser = {
+      name: formValues.name.trim(),
+      email: formValues.email.trim(),
+      password: formValues.password.trim(),
+      termsOfService: formValues.termsOfService.trim()
+    }
+
+    postNewUser(newUser);
+  };
+
+
 
   // use a hook to pull users using a GET request
   // useEffect(() => {
@@ -85,7 +107,13 @@ function App() {
       <header className="App-header">
         <h1>Advanced Form Project:</h1>
       </header>
-      <Form values={ formValues }/>
+      <Form
+        values={ formValues }
+        change={ inputChange }
+        submit={ formSubmit }
+        disabled={ disabled }
+        errors={ formErrors }
+      />
     </div>
   );
 }
