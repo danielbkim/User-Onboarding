@@ -3,8 +3,8 @@ import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import Form from './components/Form';
-// import schema from "./validation/formSchema";
-// import * as yup from 'yup';
+import schema from "./validation/formSchema";
+import * as yup from 'yup';
 
 const initialFormValues = {
   name: "",
@@ -21,11 +21,14 @@ function App() {
   const [formValues, setFormValues] = useState(initialFormValues);
 
   // Craft POST request using axios to send form data
+  // POST REQUEST AFTER YOU'VE BUILT OUT WHAT A SINGLE USER LOOKS LIKE
   const postUser = (newUser) => {
     // take the newUser object and send the axios post call to the endpoint
     axios
     .post('https://reqres.in/api/users', newUser)
     .then((res) => {
+      // I want to reset the users since I'm posting them with whatever data in the payload I have
+      // then I want to reset the form value state to what it was before
       console.log(res);
     })
     .catch((err) => {
@@ -33,66 +36,17 @@ function App() {
     });
   };
 
+  // YUP LIBRARY EVENT HANDLERS
 
-  // Assign the POST request to some sort of action in order for the request to fire
-  // axios
-  //   .post('https://regres.in/api/users', users)
-  //   .then((res) => {
-  //     console.log(res);
-  //   })
-  //   .catch(
-  //     (err) => {
-  //       console.log(err);
-  //     }
-  //   );
-  // yup is a library that helps validate inputs in forms
-  // if a user cannot post data into the backend if they're missing a field
-
-  // axios call in the APP?
-  // we have to make payload look like
-  // send the object you built out from the inputs and POST it to the endpoint API you give it
-
-  // axios
-  //   .post('url', payload)
-  //   .then
-
-
-
-  // need slices of state
-
-  // build out formSchema with 'yup' syntax
-
-  // use the get request here
-
-  // const get people
-  // const getPeople = () => {
-  //   axios
-  //     .get()
-  //     .then()
-  //     .catch()
-  // };
-
-  // const postNewFriend = (newFfriend) {
-  //   axios
-  //     .post('http://buddies.com/api/friends', newFriend)
-  //     .then((res) => {
-  //       console.log(res);
-  //     })
-  //     .catch()
-  // };
-
-  // build
-  // use GET request to get to populate the data of users - the function
-  // I don't need a get request because there's no external data needing to be pulled
-  // const getUsers = () => {
-  //   axios
-  //     .get()
-  //     .then()
-  //     .catch()
-  // };
-
-
-  // POST REQUEST AFTER YOU'VE BUILT OUT WHAT A SINGLE USER LOOKS LIKE
+  // handler for any changes to the inputs
+  const inputChange = (inputName, inputValue) => {
+    // function takes the name of the form input and the form value takes in the input name and input value
+    yup
+    // REACH - allows to peer into schema and reach for only one part to test
+    // get to a specific part of the schema using the inputName
+      .reach(schema, inputName)
+      .validate(inputValue)
+  };
 
 
   // use a hook to pull users using a GET request

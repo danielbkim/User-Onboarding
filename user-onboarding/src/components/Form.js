@@ -5,12 +5,12 @@ import { React } from 'react';
 export default function Form(props) {
 
     const { values } = props;
-    console.log(values);
+    // console.log(values);
 
     // CHANGE AND SUBMIT LOGIC SHOULD BE IN HERE
     // creating onChange logic for the inputs for the form
     const onChange = (event) => {
-        console.log(event.target.checked)
+        // console.log(event.target.checked)
         // extract what you need from the event target object
         const { name, value, type, checked } = event.target;
         
