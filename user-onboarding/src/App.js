@@ -19,6 +19,9 @@ function App() {
 
   const [users, setUsers] = useState(initialUsers);
   const [formValues, setFormValues] = useState(initialFormValues);
+  // store the state of input errors to compare against
+  const [formErrors, setFormErrors] = useState();
+  // store the state of the boolean errors to compare against
 
   // Craft POST request using axios to send form data
   // POST REQUEST AFTER YOU'VE BUILT OUT WHAT A SINGLE USER LOOKS LIKE
@@ -44,8 +47,31 @@ function App() {
     yup
     // REACH - allows to peer into schema and reach for only one part to test
     // get to a specific part of the schema using the inputName
-      .reach(schema, inputName)
-      .validate(inputValue)
+      .reach(schema, inputName) // the inputName matches the name set in the formSchema 
+      .validate(inputValue) // use the validate function to check the value from that form input
+      .then(() => {
+        // if there are no issues, path is clear and clear the error
+        setFormErrors({
+          // take all the original object with spread operator then the second value is the thing you want changed in the original object spread
+          ...formErrors,
+          [inputName]: ""
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+        // uses the formErrors state to store the errors
+        // if an error is caught - 
+        setFormErrors({
+          ...formErrors,
+          // takes the err array and puts it at the front of the array?
+          [inputName]: err.errors[0]
+        })
+      });
+      // once all the validation is complete, then go back and set the form values into state
+      setFormValues({
+        ...formValues,
+        [inputName]: inputValue
+      })
   };
 
 

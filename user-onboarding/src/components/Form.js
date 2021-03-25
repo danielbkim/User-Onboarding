@@ -1,7 +1,6 @@
 import { React } from 'react';
 // import function logic from App
 // need to add initialFormErrors for schema?
-
 export default function Form(props) {
 
     const { values } = props;
