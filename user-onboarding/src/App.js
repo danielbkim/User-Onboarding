@@ -1,12 +1,35 @@
-import axios from 'axios';
-import React, { useEffect } from 'react';
+// import axios from 'axios';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import Form from './components/Form';
 // import schema from "./validation/formSchema";
 // import * as yup from 'yup';
 
+const initialFormValues = {
+  name: "",
+  email: "",
+  password: "",
+  termsOfService: false
+};
+
+const initialUsers = [];
+
 function App() {
 
+  const [users, setUsers] = useState(initialUsers);
+  const [formValues, setFormValues] = useState(initialFormValues);
+
+  // Assign the POST request to some sort of action in order for the request to fire
+  // axios
+  //   .post('https://regres.in/api/users', users)
+  //   .then((res) => {
+  //     console.log(res);
+  //   })
+  //   .catch(
+  //     (err) => {
+  //       console.log(err);
+  //     }
+  //   );
   // yup is a library that helps validate inputs in forms
   // if a user cannot post data into the backend if they're missing a field
 
@@ -67,7 +90,7 @@ function App() {
       <header className="App-header">
         <h1>Advanced Form Project:</h1>
       </header>
-      <Form />
+      <Form values={ formValues }/>
     </div>
   );
 }

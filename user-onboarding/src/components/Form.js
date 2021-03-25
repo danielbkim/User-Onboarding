@@ -1,21 +1,25 @@
 import { React } from 'react';
 // import function logic from App
 
-const initialFormValues = {
-    name: "",
-    email: "",
-    password: "",
-    termsOfService: false
-};
+
 
 // need to add initialFormErrors for schema?
 
 
 export default function Form(props) {
 
-    const formSubmit = () => {
-        
+    const { values } = props;
+    console.log(values);
+
+    // CHANGE AND SUBMIT LOGIC SHOULD BE IN HERE
+    const onChange = (event) => {
+        console.log(event.target)
     };
+
+
+    // const formSubmit = () => {
+
+    // };
 
     return (
         <div>
@@ -30,19 +34,37 @@ export default function Form(props) {
                 <br></br>
                 <label>
                     Name:
-                    <input type='text'></input>
+                    <input
+                        value={values.name}
+                        // onChange
+                        name='name'
+                        type='text'
+
+                    />
                 </label>
                 <br></br>
                 <br></br>
                 <label>
                     Email:
-                    <input type='text'></input>
+                    <input
+                        value={values.email}
+                        // onChange
+                        name='name'
+                        type='text'
+
+                    />
                 </label>
                 <br></br>
                 <br></br>
                 <label>
                     Password:
-                    <input type='text'></input>
+                    <input
+                        value={values.password}
+                        // onChange
+                        name='name'
+                        type='text'
+
+                    />
                 </label>
                 <br></br>
                 <br></br>
@@ -50,7 +72,13 @@ export default function Form(props) {
                     {/* is checked property is resolved to true, it will always be checked true - we need to set it to be checked if the value is single */}
                     {/* values.[INSERT KEY HERE] in checked evaluate a boolean for { if value.[ WHATEVER] === true, then put this } */}
                     Terms of Service:
-                    {/* <input type='checkbox' checked={ true }></input> */}
+                    <input
+                        value={values.termsOfService}
+                        // onChange
+                        name='termsOfService'
+                        // checked
+                        type='checkbox'
+                    />
                 </label>
                 <br></br>
                 <br></br>
