@@ -95,8 +95,6 @@ function App() {
     postNewUser(newUser);
   };
 
-
-
   // use a hook to pull users using a GET request
   // useEffect(() => {
   //   getUsers();

@@ -3,7 +3,7 @@ import { React } from 'react';
 // need to add initialFormErrors for schema?
 export default function Form(props) {
 
-    const { values } = props;
+    const { values, change, submit, disabled, errors } = props;
     // console.log(values);
 
     // CHANGE AND SUBMIT LOGIC SHOULD BE IN HERE
@@ -12,13 +12,21 @@ export default function Form(props) {
         // console.log(event.target.checked)
         // extract what you need from the event target object
         const { name, value, type, checked } = event.target;
-        
+        // not sure what this if statement is doing
+        // if the type says 'checkbox' use the boolean for checked, otherwise just spit back the value
+        const valueToUse = type === "checkbox" ? checked : value;
+        change(name, valueToUse);
+    };
+
+    const onSubmit = (event) => {
+        event.preventDefault();
+        submit();
     };
 
 
     return (
         <div>
-            <form>
+            <form onSubmit={ onSubmit }>
             {/* <form onSubmit={submit}> */}
                 {/* <input name='name' type='text' value={formValues.name} onChange={change} placeholder='i.e. Tony' required></input>
                 <br></br>
@@ -26,6 +34,15 @@ export default function Form(props) {
                 <br></br>
                 <input name='role' type='text' value={formValues.role} onChange={change} placeholder='i.e tonystark@ironman.com' required></input> */}
                 {/* <br></br> */}
+                <button disabled={disabled}>submit</button>
+
+                <div className="errors">
+                {/* 🔥 RENDER THE VALIDATION ERRORS HERE */}
+                    <div>{errors.name}</div>
+                    <div>{errors.email}</div>
+                    <div>{errors.password}</div>
+                    <div>{errors.termsOfService}</div>
+                </div>
                 <br></br>
                 <label>
                     Name:
