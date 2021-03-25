@@ -1,10 +1,6 @@
 import { React } from 'react';
 // import function logic from App
-
-
-
 // need to add initialFormErrors for schema?
-
 
 export default function Form(props) {
 
@@ -12,6 +8,7 @@ export default function Form(props) {
     console.log(values);
 
     // CHANGE AND SUBMIT LOGIC SHOULD BE IN HERE
+    // creating onChange logic for the inputs for the form
     const onChange = (event) => {
         console.log(event.target.checked)
         // extract what you need from the event target object

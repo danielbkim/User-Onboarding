@@ -1,4 +1,5 @@
 // import axios from 'axios';
+import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import Form from './components/Form';
@@ -18,6 +19,20 @@ function App() {
 
   const [users, setUsers] = useState(initialUsers);
   const [formValues, setFormValues] = useState(initialFormValues);
+
+  // Craft POST request using axios to send form data
+  const postUser = (newUser) => {
+    // take the newUser object and send the axios post call to the endpoint
+    axios
+    .post('https://reqres.in/api/users', newUser)
+    .then((res) => {
+      console.log(res);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+  };
+
 
   // Assign the POST request to some sort of action in order for the request to fire
   // axios
@@ -41,7 +56,7 @@ function App() {
   //   .post('url', payload)
   //   .then
 
-  // Craft POST request using axios to send form data
+
 
   // need slices of state
 
